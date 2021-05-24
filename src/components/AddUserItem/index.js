@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {StyledInput,StyledSelect,StyledButton} from "./index.styled";
+import { validateInputChange } from "../../utils";
 
 export const AddUserItem = (props) => {
     const {setEmployees, employees} = props;
@@ -32,50 +33,42 @@ export const AddUserItem = (props) => {
         }
     }
 
-    const validateInputChange = (item) => {
-        const name = item.name;
-        const value = item.value;
-        const regExp = {
-            name: /^[a-z ,.'-]+$/i,
-            surname: /^[a-z ,.'-]+$/i,
-            email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            age:/^[1-9]?[0-9]{1}$|^100$/,
-            phone: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-        };
-
-        if(regExp[name].test(value)) {
-            setFormFieldsValidation({...formFieldsValidation,[name]:true})
-        } else {
-            setFormFieldsValidation({...formFieldsValidation,[name]:false})
-        }
-    };
-
     const isFormValid = () => {
         return Object.values(formFieldsValidation).every((value)=>value);
     }
 
     const handleNameChange = (e)=>{
         setName(e.target.value);
-        validateInputChange(e.target);
+        const inputName = e.target.name;
+        const isInputValid = validateInputChange(e.target);
+        setFormFieldsValidation({...formFieldsValidation,[inputName]:isInputValid})
     }
     const handlePositionChange = (e)=>{
         setPosition(e.target.value);
     }
     const handlePhoneChange = (e)=>{
         setPhone(e.target.value);
-        validateInputChange(e.target);
+        const inputName = e.target.name;
+        const isInputValid = validateInputChange(e.target);
+        setFormFieldsValidation({...formFieldsValidation,[inputName]:isInputValid})
     }
     const handleSurnameChange = (e)=>{
         setSurname(e.target.value);
-        validateInputChange(e.target);
+        const inputName = e.target.name;
+        const isInputValid = validateInputChange(e.target);
+        setFormFieldsValidation({...formFieldsValidation,[inputName]:isInputValid})
     }
     const handleAgeChange = (e)=>{
         setAge(e.target.value);
-        validateInputChange(e.target);
+        const inputName = e.target.name;
+        const isInputValid = validateInputChange(e.target);
+        setFormFieldsValidation({...formFieldsValidation,[inputName]:isInputValid})
     }
     const handleEmailChange = (e)=>{
         setEmail(e.target.value);
-        validateInputChange(e.target);
+        const inputName = e.target.name;
+        const isInputValid = validateInputChange(e.target);
+        setFormFieldsValidation({...formFieldsValidation,[inputName]:isInputValid})
     }
     
     

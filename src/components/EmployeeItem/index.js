@@ -1,6 +1,6 @@
 import {useHistory} from 'react-router-dom';
 import { StyledWrapper, StyledButton } from "./index.styled";
-import { Avatar } from "../Avatar/Avatar";
+import { Avatar } from "../Avatar/index";
 
 export const EmployeeItem = ({data={}, setCurrentEmployee,employees,setEmployees}) => {
   
@@ -15,10 +15,10 @@ export const EmployeeItem = ({data={}, setCurrentEmployee,employees,setEmployees
     }
 
     const handleRemoveClick = ()=>{
-        const filterEmployyes = employees.filter((item)=>{
-            return item.id != id;
+        const filteredEmployyes = employees.filter((item)=>{
+            return item.id !== id;
         })
-        setEmployees(filterEmployyes);
+        setEmployees(filteredEmployyes);
     }
 
     return (

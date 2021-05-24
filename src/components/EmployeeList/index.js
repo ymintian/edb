@@ -8,29 +8,17 @@ export const EmployeeList = (props) => {
   const [sort,setSort] = useState('relevance');
   const [search,setSearch] = useState('');
   const [isFilterShown, setIsFilterShown] = useState(false);
-
-  const processEmployees = (employees)=>{
+  
+  const processEmployees = ()=>{
+    const employeesCopy = [...employees];
     const filtersMap = Object.entries(filters).filter((item)=>item[1]);
     const filtersArr = filtersMap.reduce((acc, item)=>{acc.push(item[0]);return acc }, [])
     
-    if(sort === 'relevance' && !filtersArr.length) {
-      return employees;
+    if(sort === 'relevance' && !filtersArr.length && !search) {
+      return employeesCopy;
     }
-    const filteredEmployees = filtersArr.length ? employees.filter((item)=>filtersArr.includes(item.position)) : employees;
     
-    function compare( a, b ) {      
-      const aName = a.name.toLowerCase();
-      const bName = b.name.toLowerCase();
-
-      if ( aName < bName ){
-        return sort === 'asc' ? -1 : 1;
-      }
-      if ( aName > bName ){
-        return sort === 'asc' ? 1 : -1;
-      }
-      return 0;
-    }
-
+    const filteredEmployees = filtersArr.length ? employeesCopy.filter((item)=>filtersArr.includes(item.position)) : employeesCopy;
     const sortedEmployees = sort !=='relevance' ? filteredEmployees.sort(compare) : filteredEmployees;
 
     if(search) {
@@ -39,6 +27,19 @@ export const EmployeeList = (props) => {
     }
 
     return sortedEmployees;
+  }
+
+  const compare = ( a, b )=>{      
+    const aName = a.name.toLowerCase();
+    const bName = b.name.toLowerCase();
+
+    if ( aName < bName ){
+      return sort === 'asc' ? -1 : 1;
+    }
+    if ( aName > bName ){
+      return sort === 'asc' ? 1 : -1;
+    }
+    return 0;
   }
 
   const handleSearchChange = (e)=>{
@@ -64,7 +65,7 @@ export const EmployeeList = (props) => {
     setIsFilterShown(!isFilterShown);
   }
 
-  const processedEmployees = processEmployees(employees);
+  const processedEmployees = processEmployees();
 
   return <div>
       <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',alignItems:'flex-end',marginBottom:'30px'}}>
@@ -83,22 +84,22 @@ export const EmployeeList = (props) => {
                 <div style={{position:"relative"}}>
                   <StyledFilterList>
                     <div>
-                      <input type="checkbox" id="be" name="be" value="be" onChange={handleFilterChange} /><label for="be">be</label>
+                      <input type="checkbox" id="be" name="be" value="be" onChange={handleFilterChange} /><label htmlFor="be">be</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="fe" name="fe" value="fe" onChange={handleFilterChange} /><label for="fe">fe</label>
+                      <input type="checkbox" id="fe" name="fe" value="fe" onChange={handleFilterChange} /><label htmlFor="fe">fe</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="qa" name="qa" value="qa" onChange={handleFilterChange} /><label for="qa"l>qa</label>
+                      <input type="checkbox" id="qa" name="qa" value="qa" onChange={handleFilterChange} /><label htmlFor="qa"l>qa</label>
                     </div>
                     <div>
-                      <input type="checkbox" name="pm" id="pm" value="pm" onChange={handleFilterChange} /><label for="pm">pm</label>
+                      <input type="checkbox" name="pm" id="pm" value="pm" onChange={handleFilterChange} /><label htmlFor="pm">pm</label>
                     </div>
                     <div>
-                      <input type="checkbox" name="aqa" id="aqa" value="aqa" onChange={handleFilterChange} /><label for="aqa">aqa</label>
+                      <input type="checkbox" name="aqa" id="aqa" value="aqa" onChange={handleFilterChange} /><label htmlFor="aqa">aqa</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="other" name="other" value="other" onChange={handleFilterChange} /><label for="other">other</label>
+                      <input type="checkbox" id="other" name="other" value="other" onChange={handleFilterChange} /><label htmlFor="other">other</label>
                     </div>
                     <div><StyledButton onClick={removeAllFilters} color="red">Remove filters</StyledButton></div> 
                   </StyledFilterList>

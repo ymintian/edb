@@ -1,11 +1,7 @@
 import React from "react";
 
-function NoMatch(props){
+export const NoMatch =(props)=>{
 
     return <div>No match</div>
     
 }
-
-
-
-export default NoMatch;
