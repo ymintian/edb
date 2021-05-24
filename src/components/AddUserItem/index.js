@@ -25,8 +25,9 @@ export const AddUserItem = (props) => {
     
     const handleSubmit = (e)=>{
         e.preventDefault();
+        const lastElementId = employees[employees.length-1].id;
         if(isFormValid()) {
-            setEmployees([...employees, {name,age,phone,surname,position,email, id: employees.length}]);
+            setEmployees([...employees, {name,age,phone,surname,position,email, id: lastElementId + 1}]);
             history.push('/');
         }
     }
