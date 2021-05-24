@@ -1,31 +1,23 @@
 import { useEffect, useState } from "react";
 import { Switch,Route,Link } from "react-router-dom";
-import EmployeeList from "./components/EmployeeList";
-import Employee from "./components/Employee";
+import {EmployeeList} from "./components/EmployeeList/index";
+import {Employee} from "./components/Employee/index";
 import NoMatch from "./components/NoMatch";
+import {employeeList} from './mocks';
+import { Header } from "./components/Header/Header";
 
-function App() {
+const App = () => {
 
-  const employeeList = [
-    {name: 'Andrii', surname:'Ivanov', age:20, position: 'be', phone: '3809999999', id:0},
-    {name: 'Oleh', surname:'Petrov', age:21, position: 'fe', phone: '3809999999', id:1},
-    {name: 'Taras', surname:'Shevchenko', age:29, position: 'fe', phone: '3809999999', id:2},
-    {name: 'Roman', surname:'Shevchenko', age:29, position: 'qa', phone: '3809999999', id:3},
-    {name: 'Anatolii', surname:'Shevchenko', age:19, position: 'be', phone: '3809999999', id:4}
-  ];
     const [employees, setEmployees] = useState(employeeList);
     const [currentEmployee, setCurrentEmployee] = useState(null);
     
-    useEffect(()=>{
-      console.log('effect', employees, currentEmployee)
-    }, [employees, currentEmployee]);
-
-    console.log('render app', {employees})
+    // useEffect(()=>{
+    //   console.log('effect', employees, currentEmployee)
+    // }, [employees, currentEmployee]);
   
   return (
-    <div className="App">
-      <Link to="/">Home</Link>
-      <Link to="/employee" >Add employee</Link>
+    <div style={{width:'90%',margin: '0 auto'}}>
+      <Header/>
 
       <Switch>
           <Route path="/employee/:id">

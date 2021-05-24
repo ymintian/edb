@@ -1,10 +1,10 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import AddUserItem from './AddUserItem';
-import User from './User';
+import {AddUserItem} from '../AddUserItem/index';
+import {User} from '../User/index';
 
-function Employee(props){
+export const Employee = (props) => {
     const {employees, setCurrentEmployee} = props;
 
     useEffect(()=>{
@@ -12,12 +12,10 @@ function Employee(props){
             setCurrentEmployee(null)
         }
     })
+
     let { id } = useParams();
     const employee = employees.find((el) => {console.log('test', el.id ,id);return el.id === +id});
-    console.log('employee props',{props})
+
     return id ? <User {...props} id={id} /> : <AddUserItem {...props} />
 }
 
-
-
-export default Employee;

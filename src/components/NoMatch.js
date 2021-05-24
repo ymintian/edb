@@ -2,7 +2,7 @@ import React from "react";
 
 function NoMatch(props){
 
-    return <div>Incorrect url</div>
+    return <div>No match</div>
     
 }
 
