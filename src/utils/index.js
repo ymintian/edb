@@ -9,5 +9,5 @@ export const validateInputChange = (item) => {
         phone: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
     };
 
-    return regExp[name].test(value) ? true : false;
+    return regExp[name].test(value);
 };
