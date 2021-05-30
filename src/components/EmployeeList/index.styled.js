@@ -22,9 +22,9 @@ export const StyledButton = styled.button`
 `;
 
 export const StyledInput = styled.input`
-    display:block; 
-    width:300px;
-    max-width:250px;
+    display: block; 
+    width: 300px;
+    max-width: 250px;
     margin: 10px 0;
     height: 45px;
     padding: 0px 16px;
@@ -43,26 +43,52 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledSelect = styled.select`
-    display:block; 
-    width:250px;
-    max-width:100%;
+    display: block; 
+    width: 250px;
+    max-width: 100%;
     margin: 15px 0;
     height: 45px;
     padding: 0px 16px;
     font-size: 16px;
-    box-sizing:border-box;
+    box-sizing: border-box;
     margin: 10px 0;
-    background-color:wheat;
-    border-radius:4px;
+    background-color: wheat;
+    border-radius: 4px;
 `;
 
 export const StyledFilterList = styled.div`
-    position:absolute;
-    top:100%;
+    position: absolute;
+    top: 100%;
     width: 250px;
     padding: 15px;
-    background-color:#fff;
-    color:#000;
+    background-color: #fff;
+    color: #000;
     border-radius: 4px;
-    box-sizing:border-box;
+    box-sizing: border-box;
+`;
+
+export const StyledListWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+`;
+
+export const StyledSortWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+    justify-content: center;
+`;
+
+export const StyledFiltersWrapper = styled.div`
+    position: relative;
+`;
+
+export const StyledItemsWrapper = styled.div`
+    display: flex;
+    justify-content: flex-center;
+    flex-wrap: wrap;
 `;

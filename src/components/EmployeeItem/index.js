@@ -1,23 +1,21 @@
-import {useHistory} from 'react-router-dom';
-import { StyledWrapper, StyledButton } from "./index.styled";
+import { useHistory } from 'react-router-dom';
+import { StyledWrapper, StyledButton, StyledButtonsWrapper } from "./index.styled";
 import { Avatar } from "../Avatar/index";
 
-export const EmployeeItem = ({data={}, setCurrentEmployee,employees,setEmployees}) => {
+export const EmployeeItem = ({data = {}, setCurrentEmployee, employees, setEmployees}) => {
   
-    const {name,surname,id,phone,position,age,email} = data;
-    const url = `employee/${id}`;
+    const { name, surname, phone, position, age, email, id } = data;
+    const url = 'employee';
     const history = useHistory();
 
 
-    const handleEditClick = ()=>{
+    const handleEditClick = () => {
         history.push(url);
         setCurrentEmployee(data);
     }
 
-    const handleRemoveClick = ()=>{
-        const filteredEmployyes = employees.filter((item)=>{
-            return item.id !== id;
-        })
+    const handleRemoveClick = () => {
+        const filteredEmployyes = employees.filter((item) => item.id !== id)
         setEmployees(filteredEmployyes);
     }
 
@@ -30,10 +28,10 @@ export const EmployeeItem = ({data={}, setCurrentEmployee,employees,setEmployees
                 <div>Phone: {phone}</div>
                 <div>Email: {email}</div>
                 <div>Position: {position ? position.toUpperCase() : 'n/a'}</div>
-                <div style={{display: 'flex',flexDirection:'column',alignItems:'center',flexWrap:'wrap'}}>
+                <StyledButtonsWrapper>
                     <StyledButton onClick={handleEditClick} color="blue">edit</StyledButton>
                     <StyledButton onClick={handleRemoveClick} color="red">remove</StyledButton>
-                </div>
+                </StyledButtonsWrapper>
         </StyledWrapper>
     )
 }

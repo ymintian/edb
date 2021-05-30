@@ -27,3 +27,16 @@ export const StyledHomeLinkWrapper = styled.div`
         text-decoration:none;
     }
 `;
+
+export const StyledHeaderWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
+    a {
+        text-decoration: none;
+    }
+`;
+

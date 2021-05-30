@@ -32,3 +32,10 @@ export const StyledButton = styled.button`
         cursor:pointer;
     }
 `;
+
+export const StyledButtonsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+`;
