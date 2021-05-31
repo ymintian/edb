@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
-import { StyledWrapper, StyledButton, StyledButtonsWrapper } from "./index.styled";
+import { StyledWrapper, StyledButtonsWrapper } from "./index.styled";
 import { Avatar } from "../Avatar/index";
+import { Button } from "../common/Button";
 
 export const EmployeeItem = ({data = {}, setCurrentEmployee, employees, setEmployees}) => {
   
@@ -29,8 +30,8 @@ export const EmployeeItem = ({data = {}, setCurrentEmployee, employees, setEmplo
                 <div>Email: {email}</div>
                 <div>Position: {position ? position.toUpperCase() : 'n/a'}</div>
                 <StyledButtonsWrapper>
-                    <StyledButton onClick={handleEditClick} color="blue">edit</StyledButton>
-                    <StyledButton onClick={handleRemoveClick} color="red">remove</StyledButton>
+                    <Button onClick={handleEditClick} color="blue">edit</Button>
+                    <Button onClick={handleRemoveClick} color="red">remove</Button>
                 </StyledButtonsWrapper>
         </StyledWrapper>
     )

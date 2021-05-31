@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect, useMemo } from "react";
 import { useHistory } from "react-router-dom";
-import { StyledInput, StyledSelect, StyledButton } from './index.styled';
 import { validateInputChange } from "../../utils";
 import { positions } from "../../mocks";
+import { Input } from "../common/Input";
+import { Select } from "../common/Select";
+import { Button } from "../common/Button";
 
 export const EmployeeForm = (props) => {
     const { setEmployees, employees, currentEmployee = {}, setCurrentEmployee } = props;
@@ -88,7 +90,7 @@ export const EmployeeForm = (props) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <StyledInput  
+            <Input  
                 name="name" 
                 value={formValues.name.value} 
                 placeholder="name" 
@@ -96,7 +98,7 @@ export const EmployeeForm = (props) => {
                 className={formValues.name.isValid ? '' : 'error' } 
                 required 
                 maxLength="30" />
-            <StyledInput 
+            <Input 
                 name="surname" 
                 value={formValues.surname.value} 
                 placeholder="surname" 
@@ -104,14 +106,14 @@ export const EmployeeForm = (props) => {
                 className={formValues.surname.isValid ? '' : 'error' } 
                 required 
                 maxLength="30" />
-            <StyledInput  
+            <Input  
                 name="age" 
                 value={formValues.age.value} 
                 placeholder="age" onChange={handleChange} 
                 className={formValues.age.isValid ? '' : 'error' } 
                 required 
                 maxLength="30" />
-            <StyledInput  
+            <Input  
                 name="phone" 
                 value={formValues.phone.value} 
                 placeholder="phone" 
@@ -119,7 +121,7 @@ export const EmployeeForm = (props) => {
                 className={formValues.phone.isValid ? '' : 'error' } 
                 required 
                 maxLength="30" />
-            <StyledInput 
+            <Input 
                 name="email"
                 value={formValues.email.value} 
                 placeholder="email" 
@@ -129,7 +131,7 @@ export const EmployeeForm = (props) => {
                 maxLength="30" />
             <div>
                 <p>Select position:</p>
-                <StyledSelect value={formValues.position.value} name="position" onChange={handleChange} required>
+                <Select value={formValues.position.value} name="position" onChange={handleChange} required>
                     <option value='' disabled>Select position</option>
                     {
                         positions.map((item) => {
@@ -138,9 +140,9 @@ export const EmployeeForm = (props) => {
                             )
                         })
                     }
-                </StyledSelect>
+                </Select>
             </div>
-            <StyledButton type="submit" color="#76e176">save</StyledButton>
+            <Button type="submit" color="#76e176">save</Button>
         </form>
     );
 }

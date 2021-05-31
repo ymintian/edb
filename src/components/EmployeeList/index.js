@@ -1,9 +1,6 @@
 import { useMemo, useState } from "react";
 import { EmployeeItem } from "../EmployeeItem";
-import { 
-  StyledButton, 
-  StyledInput, 
-  StyledSelect, 
+import {   
   StyledFilterList, 
   StyledListWrapper,
   StyledSortWrapper,
@@ -12,6 +9,9 @@ import {
 } from "./index.styled";
 import { filtersInitialState, positions } from "../../mocks/index";
 import { processEmployees } from "../../utils/index";
+import { Input } from "../common/Input";
+import { Select } from "../common/Select";
+import { Button } from "../common/Button";
 
 export const EmployeeList = (props) => {
   const { employees, setCurrentEmployee, setEmployees } = props;
@@ -19,26 +19,6 @@ export const EmployeeList = (props) => {
   const [sort, setSort] = useState('relevance');
   const [search, setSearch] = useState('');
   const [isFilterShown, setIsFilterShown] = useState(false);
-  
-  // const processEmployees = () => {
-  //   const employeesCopy = [...employees];
-  //   const filtersMap = Object.entries(filters).filter((item) => item[1]);
-  //   const filtersArr = filtersMap.reduce((acc, item) => [...acc, item[0]], []);
-    
-  //   if(sort === 'relevance' && !filtersArr.length && !search) {
-  //     return employeesCopy;
-  //   }
-    
-  //   const filteredEmployees = filtersArr.length ? employeesCopy.filter((item) => filtersArr.includes(item.position)) : employeesCopy;
-  //   const sortedEmployees = sort !=='relevance' ?  sortArrayBy(filteredEmployees, sort, 'name') : filteredEmployees;
-
-  //   if(search) {
-  //     const searchedEmployees = sortedEmployees.filter((item) => item.name.toLowerCase().includes(search));
-  //     return searchedEmployees;
-  //   }
-
-  //   return sortedEmployees;
-  // }
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
@@ -67,17 +47,17 @@ export const EmployeeList = (props) => {
 
   return <div>
       <StyledListWrapper>
-        <StyledInput type="text" value={search} placeholder="Search by name..." onChange={handleSearchChange} maxLength="30" />
+        <Input value={search} placeholder="Search by name..." onChange={handleSearchChange} maxLength="30" />
         <StyledSortWrapper>
           <div>sort by</div>
-          <StyledSelect value={sort} onChange={handleSortChange}>
+          <Select value={sort} onChange={handleSortChange}>
                 <option value="relevance">relevance</option>
                 <option value="asc">name &#8593;</option>
                 <option value="desc">name &#8595;</option>
-          </StyledSelect>
+          </Select>
         </StyledSortWrapper>
             <div>
-              <StyledButton onClick={toggleFilter}>Filter by position</StyledButton>
+              <Button onClick={toggleFilter}>Filter by position</Button>
               {isFilterShown && 
                 <StyledFiltersWrapper>
                   <StyledFilterList>
@@ -91,7 +71,7 @@ export const EmployeeList = (props) => {
                       })
                     }
                     <div>
-                      <StyledButton onClick={removeAllFilters} color="red">Remove filters</StyledButton>
+                      <Button onClick={removeAllFilters} color="red">Remove filters</Button>
                     </div> 
                   </StyledFilterList>
                 </StyledFiltersWrapper>
