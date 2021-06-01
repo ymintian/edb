@@ -142,7 +142,7 @@ export const EmployeeForm = (props) => {
                     }
                 </Select>
             </div>
-            <Button type="submit" color="#76e176">save</Button>
+            <Button type="submit" color="#76e176" customWidth="400px">save</Button>
         </form>
     );
 }

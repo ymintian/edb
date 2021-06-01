@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-    width: 250px;
+    width: ${props => props.customWidth || '250px'};
     height:45px;
     max-width:100%;
     padding: 10px 15px;

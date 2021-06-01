@@ -14,19 +14,19 @@ const App = () => {
     <div>
       <Header />
       <Switch>
-          <Route path="/employee">
-            <EmployeeForm 
-              currentEmployee={currentEmployee} 
-              employees={employees} 
-              setCurrentEmployee={setCurrentEmployee} 
-              setEmployees={setEmployees} />
-          </Route>
-          <Route exact path="/">
-            <EmployeeList 
-              setEmployees={setEmployees} 
-              setCurrentEmployee={setCurrentEmployee} 
-              employees={employees} />
-          </Route>
+        <Route path="/employee">
+          <EmployeeForm 
+            currentEmployee={currentEmployee} 
+            employees={employees} 
+            setCurrentEmployee={setCurrentEmployee} 
+            setEmployees={setEmployees} />
+        </Route>
+        <Route exact path="/">
+          <EmployeeList 
+            setEmployees={setEmployees} 
+            setCurrentEmployee={setCurrentEmployee} 
+            employees={employees} />
+        </Route>
       </Switch>
     </div>
   );

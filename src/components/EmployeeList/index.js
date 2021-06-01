@@ -51,13 +51,13 @@ export const EmployeeList = (props) => {
         <StyledSortWrapper>
           <div>sort by</div>
           <Select value={sort} onChange={handleSortChange}>
-                <option value="relevance">relevance</option>
-                <option value="asc">name &#8593;</option>
-                <option value="desc">name &#8595;</option>
+              <option value="relevance">relevance</option>
+              <option value="asc">name &#8593;</option>
+              <option value="desc">name &#8595;</option>
           </Select>
         </StyledSortWrapper>
-            <div>
-              <Button onClick={toggleFilter}>Filter by position</Button>
+        <div>
+            <Button onClick={toggleFilter}>Filter by position</Button>
               {isFilterShown && 
                 <StyledFiltersWrapper>
                   <StyledFilterList>
@@ -76,16 +76,16 @@ export const EmployeeList = (props) => {
                   </StyledFilterList>
                 </StyledFiltersWrapper>
               }
-            </div>
+        </div>
       </StyledListWrapper>
       <StyledItemsWrapper>
         {processedEmployees.length ? processedEmployees.map((item, i) => (
           <EmployeeItem 
-              key={i} 
-              setCurrentEmployee={setCurrentEmployee} 
-              employees={employees} 
-              setEmployees={setEmployees}  
-              data={{...item}} />)
+            key={i} 
+            setCurrentEmployee={setCurrentEmployee} 
+            employees={employees} 
+            setEmployees={setEmployees}  
+            data={{...item}} />)
           ) : <h1>No results</h1>
         }
       </StyledItemsWrapper>
